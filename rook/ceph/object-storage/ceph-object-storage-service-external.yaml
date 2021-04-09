@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ceph-object-store-rgw-service-external
+  namespace: rook-ceph
+  labels:
+    app: rook-ceph-rgw
+    rook_cluster: rook-ceph
+    rook_object_store: ceph-object-store
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+spec:
+  ports:
+  - name: rgw
+    port: 7480
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: rook-ceph-rgw
+    rook_cluster: rook-ceph
+    rook_object_store: ceph-object-store
+  sessionAffinity: None
+  type: LoadBalancer
