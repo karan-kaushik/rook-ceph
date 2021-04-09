@@ -1,0 +1,7 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: ceph-object-store-bucket-1
+spec:
+  bucketName: ceph-object-store-bucket-1
+  storageClassName: ceph-object-store-bucket
